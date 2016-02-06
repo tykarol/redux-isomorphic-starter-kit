@@ -1,11 +1,11 @@
-#Redux Isomorphic Starter Kit
+# Redux Isomorphic Starter Kit
 
-This kit have all what you need to start new app ;) 
+This kit has all what you need to start new app ;) 
 You can find here integrated React with Redux and Router, implemented simple JWT (JSON Web Tokens) authentication, CSS Module and all is isomorphic so Server Side Rendering works great. Dev server works with hot reloading (with react and css modules).
 
 Go below to read about all used tools and technology.
 
-##Install and run
+## Install and run
 
 After clone repository you need to run:
 
@@ -13,7 +13,7 @@ After clone repository you need to run:
 * `npm run dist` for build files
 * `npm run serve` and go to page `http://localhost:3000` for dev server
 
-###Available commands
+### Available commands
 
 * `npm run dist [-- --api_uri]` - compiling files (files version for production `NODE_ENV=production`) - you can use `api_uri` parameter to change `api_uri` config value
 * `npm run server` - running simple node server - without compile so you need run `dist` method first
@@ -24,16 +24,17 @@ After clone repository you need to run:
 
 Check `package.json` for aliases.
 
-##About
+## About
 
-###TODO
+### Todo
 
-* Add isomorphic pre-fetching data (using compositions from ES6)
-* Internationalization
-* Authorization (for pages/components)
-* Better documentation
+* [ ] Add isomorphic pre-fetching data (using decorators)
+* [ ] Internationalization
+* [ ] Authorization (for pages/components)
+* [ ] Write tests
+* [ ] Better documentation
 
-###Structure
+### Structure
 
 ```
 .
@@ -58,6 +59,7 @@ Check `package.json` for aliases.
 │   ├── dev-server.js          # Application dev server root file
 │   ├── routes.js              # Application routes definitions
 │   ├── server.js              # Application server root file
+└── .eslint                    # ESLint config file for IDE
 └── config.js                  # Base config file - used by Webpack, Babel, Webpack Isomorphic Tools, SSR and more
 └── isomorphic-tool-config.js  # Config file for Webpack Isomorphic Tools
 └── webpack-config.js          # Config file for Webpack
@@ -65,7 +67,7 @@ Check `package.json` for aliases.
 
 Tests must be in the directory `__tests__` which should be in the `./src` or deeper (check `./src/actions/__tests__`). The `test` commands search for `./src/**/__tests__/**/*.js`.
 
-###Used Tools
+### Used Tools
 
 * `webpack` - https://webpack.github.io
 * `babel` - https://babeljs.io
@@ -76,7 +78,7 @@ Tests must be in the directory `__tests__` which should be in the `./src` or dee
 * `mocha` - https://mochajs.org
 * `chai` - http://chaijs.com
 
-###Used Technology
+### Used Technology
 
 * `react` (JSX) - https://facebook.github.io/react
 * `redux` - https://github.com/rackt/redux
@@ -91,11 +93,11 @@ Tests must be in the directory `__tests__` which should be in the `./src` or dee
 * `normalize.css` - https://github.com/necolas/normalize.css
 * `react-helmet` - https://github.com/nfl/react-helmet
 
-###Tested on
+### Tested on
 
 * node `5.2.0`
 * npm `3.3.12`
 
-###License
+### License
 
 The MIT License (MIT)
