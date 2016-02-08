@@ -95,8 +95,8 @@ Tests must be in the directory `__tests__` which should be in the `./src` or dee
 
 ### Tested on
 
-* node `5.2.0`
-* npm `3.3.12`
+* node `>=5.2.0`
+* npm `>=3.3.12`
 
 ### License
 
