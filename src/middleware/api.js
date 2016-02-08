@@ -1,6 +1,6 @@
 import { normalize } from 'normalizr';
 import { camelizeKeys } from 'humps';
-import merge from 'lodash/object/merge';
+import merge from 'lodash/merge';
 
 function callApi(endpoint, schema, options) {
     const fullUrl = `${__API_URI__}${endpoint}.json`;

@@ -1,5 +1,5 @@
 var path   = require('path');
-var merge  = require('lodash/object/merge');
+var merge  = require('lodash/merge');
 var config = require('../config');
 
 require('babel-register')(merge({}, config.get('babel_options'), {

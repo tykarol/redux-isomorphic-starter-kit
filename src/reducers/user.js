@@ -1,4 +1,4 @@
-import merge from 'lodash/object/merge';
+import merge from 'lodash/merge';
 import {
     LOGIN_USER_TOKEN_SAVE,
     LOGIN_USER_TOKEN_CLEAR,
