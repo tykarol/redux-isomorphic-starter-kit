@@ -41,9 +41,6 @@ Check `package.json` for aliases.
 ├── bin                        # Scripts for npm run
 ├── public                     # All built files (At this address should indicate the URL)
 │   └── mock-api               # Mocked API files (only for example) - You can delete then
-├── config                     # Project configuration settings
-├── server                     # Koa application (uses webpack middleware)
-│   └── main.js                # Server application entry point
 ├── src                        # Application source code
 │   ├── actions                # Redux actions
 │   ├── components             # React Components
@@ -58,10 +55,10 @@ Check `package.json` for aliases.
 │   ├── app.js                 # Application root file
 │   ├── dev-server.js          # Application dev server root file
 │   ├── routes.js              # Application routes definitions
-│   ├── server.js              # Application server root file
-└── .eslint                    # ESLint config file for IDE
-└── config.js                  # Base config file - used by Webpack, Babel, Webpack Isomorphic Tools, SSR and more
-└── isomorphic-tool-config.js  # Config file for Webpack Isomorphic Tools
+│   └── server.js              # Application server root file
+├── .eslint                    # ESLint config file for IDE
+├── config.js                  # Base config file - used by Webpack, Babel, Webpack Isomorphic Tools, SSR and more
+├── isomorphic-tool-config.js  # Config file for Webpack Isomorphic Tools
 └── webpack-config.js          # Config file for Webpack
 ```
 

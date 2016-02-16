@@ -1,5 +1,9 @@
 # Chanelog
 
+## HEAD
+
+* Update README
+
 ## v0.1.0
 > 08.02.2016
 
