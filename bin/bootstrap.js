@@ -1,6 +1,6 @@
-var path   = require('path');
-var merge  = require('lodash/merge');
-var config = require('../config');
+const path = require('path');
+const merge = require('lodash/merge');
+const config = require('../config');
 
 require('babel-register')(merge({}, config.get('babel_options'), {
     cache: false,

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Redirect, IndexRoute } from 'react-router';
 
 import {

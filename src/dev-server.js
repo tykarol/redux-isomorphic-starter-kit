@@ -1,4 +1,4 @@
-import express from 'express';
+import Express from 'express';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
@@ -12,8 +12,8 @@ import config from '../config';
 const host = config.get('webpack_host');
 const port = config.get('webpack_port');
 
-let app  = new express();
-let compiler = webpack(webpackConfig);
+const app = new Express();
+const compiler = webpack(webpackConfig);
 
 app.use(historyApiFallback());
 
@@ -29,14 +29,13 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler));
 
 // This is only for mocked api, you can simple delete this
-app.all('/mock-api/*', function(req, res, next) {
+app.all('/mock-api/*', (req, res, next) => {
+    // eslint-disable-next-line no-param-reassign
     req.method = 'GET';
     next();
 });
 
-app.use(express.static(config.get('dir_dist')));
-
-app.use(handleRender);
+app.use(Express.static(config.get('dir_dist')));
 
 function handleRender(req, res) {
     if (__DEV__) {
@@ -52,10 +51,14 @@ function handleRender(req, res) {
     res.send(`<!doctype html>${html}`);
 }
 
-app.listen(port, host, function(error) {
+app.use(handleRender);
+
+app.listen(port, host, (error) => {
     if (error) {
+        // eslint-disable-next-line no-console
         console.error(error);
     } else {
-        console.info("==> Listening on %s:%s. Open up http://%s:%s/ in your browser.", host, port, host, port);
+        // eslint-disable-next-line no-console
+        console.info('==> Listening on %s:%s. Open up http://%s:%s/ in your browser.', host, port, host, port);
     }
 });

@@ -20,10 +20,10 @@ export class TestPage extends Component {
         this.props.loadTest(testId, ['title', 'questionsCount']);
     }
 
-    render () {
+    render() {
         const { testId, test } = this.props;
 
-        if(!test) {
+        if (!test) {
             return (
                 <div>Loading</div>
                 );
@@ -46,9 +46,9 @@ const mapStateToProps = (state) => {
         testId,
         test: tests[String(testId)]
     };
-}
+};
 
 export default connect(
-    mapStateToProps, 
+    mapStateToProps,
     { loadTest }
-)(TestPage)
+)(TestPage);

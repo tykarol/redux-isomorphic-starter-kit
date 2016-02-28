@@ -18,7 +18,7 @@ export class TestsPage extends Component {
     componentWillMount() {
         this.loadData();
     }
-    
+
     loadData() {
         const { tag } = this.props;
         this.props.loadTests(tag);
@@ -27,7 +27,7 @@ export class TestsPage extends Component {
     render() {
         const { tests } = this.props;
 
-        if(!tests) {
+        if (!tests) {
             return (
                 <div>
                     Loading
@@ -35,12 +35,10 @@ export class TestsPage extends Component {
                 );
         }
 
-        const testsItems = tests.map(function(item) {
-            return {
-                url: `test/${item.id}`,
-                ...item
-            };
-        });
+        const testsItems = tests.map((item) => ({
+            ...item,
+            url: `test/${item.id}`
+        }));
 
         return (
             <div>
@@ -62,16 +60,16 @@ const mapStateToProps = (state) => {
     } = state;
 
     const tagPagination = testsByTag[tag] || { ids: [] };
-    const tagTests = tagPagination.ids.map(id => tests[id])
+    const tagTests = tagPagination.ids.map(id => tests[id]);
 
     return {
         tag,
         testsPagination: tagPagination,
         tests: tagTests
     };
-}
+};
 
 export default connect(
-    mapStateToProps, 
+    mapStateToProps,
     { loadTests }
-)(TestsPage)
+)(TestsPage);

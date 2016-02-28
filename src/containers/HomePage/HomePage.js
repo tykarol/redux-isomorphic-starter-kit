@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
 export class HomePage extends Component {
-    render () {
+    render() {
         return (
             <div>
                 <Helmet title="Home page" />
@@ -13,11 +13,9 @@ export class HomePage extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return { };
-}
+const mapStateToProps = () => ({});
 
 export default connect(
-    mapStateToProps, 
+    mapStateToProps,
     { }
-)(HomePage)
+)(HomePage);

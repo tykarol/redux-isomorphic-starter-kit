@@ -1,6 +1,6 @@
 import merge from 'lodash/merge';
 
-var initialState = {
+const initialState = {
     tests: {}
 };
 

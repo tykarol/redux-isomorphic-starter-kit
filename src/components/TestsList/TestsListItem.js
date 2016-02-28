@@ -20,10 +20,19 @@ export default class TestsListItem extends Component {
 
     render() {
         const { item } = this.props;
-        const label = item.title + (item.score ? ' - ' + item.score : '');
+        const label = item.title + (item.score ? ` - ${item.score}` : '');
+
+        const buttonProps = {
+            label,
+            primary: true,
+            linkButton: true,
+            containerElement: <Link to={item.url} />
+        };
 
         return (
-            <li><RaisedButton label={label} primary={true} linkButton={true} containerElement={<Link to={item.url} />} /></li>
+            <li>
+                <RaisedButton {...buttonProps} />
+            </li>
         );
     }
 }

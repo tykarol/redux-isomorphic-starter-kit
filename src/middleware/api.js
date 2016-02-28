@@ -36,11 +36,11 @@ export default store => next => action => {
     const { schema, types } = callAPI;
 
     const { user: { token } } = store.getState();
-    if(token && typeof token === 'string') {
+    if (token && typeof token === 'string') {
         options = merge({}, options, {
             credentials: 'include',
             headers: {
-                'Authorization': `Bearer ${token}`
+                Authorization: `Bearer ${token}`
             }
         });
     }
@@ -68,7 +68,7 @@ export default store => next => action => {
         return finalAction;
     }
 
-    const [ requestType, successType, failureType ] = types;
+    const [requestType, successType, failureType] = types;
     next(actionWith({ type: requestType }));
 
     return callApi(endpoint, schema, options).then(
@@ -82,4 +82,4 @@ export default store => next => action => {
             message: error.message || 'Something bad happened'
         }))
     );
-}
+};

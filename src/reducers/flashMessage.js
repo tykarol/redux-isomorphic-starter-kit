@@ -1,6 +1,6 @@
 import { RESET_FLASH_MESSAGE } from 'actions';
 
-var initialState = {
+const initialState = {
     status: null,
     message: null
 };

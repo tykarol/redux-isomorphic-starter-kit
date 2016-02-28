@@ -19,8 +19,8 @@ export default function configureStore(history, initialState) {
         module.hot.accept('reducers', () => {
             const nextRootReducer = require('reducers');
             store.replaceReducer(nextRootReducer);
-        })
+        });
     }
 
     return store;
-};
+}

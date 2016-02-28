@@ -1,6 +1,6 @@
 import { Schema, arrayOf } from 'normalizr';
 
-const testSchema     = new Schema('tests', { idAttribute: 'id' });
+const testSchema = new Schema('tests', { idAttribute: 'id' });
 const loggedUser = {};
 
 // Schemas for API responses.

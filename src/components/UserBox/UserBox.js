@@ -23,16 +23,16 @@ export default class UserBox extends Component {
     constructor(props) {
         super(props);
 
-        this.handleFormSubmit    = this.handleFormSubmit.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleEnterKeyInput = this.handleEnterKeyInput.bind(this);
-        this.handleLoginClick    = this.handleLoginClick.bind(this);
-        this.handleLogoutClick   = this.handleLogoutClick.bind(this);
+        this.handleLoginClick = this.handleLoginClick.bind(this);
+        this.handleLogoutClick = this.handleLogoutClick.bind(this);
     }
 
     componentWillMount() {
         const { user: { auth } } = this.props;
 
-        if(auth) {
+        if (auth) {
             this.props.onLoad(['name', 'surname', 'image']);
         }
     }
@@ -66,27 +66,49 @@ export default class UserBox extends Component {
     }
 
     render() {
+        const that = this;
         const { user: { auth, profile, isFetching } } = this.props;
 
-        if(auth && isFetching === true) {
+        if (auth && isFetching === true) {
             return (
                 <div>Loading...</div>
                 );
         }
 
         if (!auth || !profile) {
+            const usernameFieldProps = {
+                floatingLabelText: 'Username',
+                type: 'text',
+                ref: 'username',
+                onEnterKeyDown: that.handleEnterKeyInput
+            };
+
+            const passwordFieldProps = {
+                floatingLabelText: 'Password',
+                type: 'password',
+                ref: 'password',
+                onEnterKeyDown: that.handleEnterKeyInput
+            };
+
+            const loginButtonProps = {
+                label: 'Login',
+                onClick: that.handleLoginClick
+            };
+
             return (
                 <form onSubmit={this.handleFormSubmit}>
-                    <TextField floatingLabelText="Username" type="text" ref="username" onEnterKeyDown={this.handleEnterKeyInput} />
-                    <TextField floatingLabelText="Password" type="password" ref="password" onEnterKeyDown={this.handleEnterKeyInput} />
-                    <FlatButton label="Login" onClick={this.handleLoginClick} />
+                    <TextField {...usernameFieldProps} />
+                    <TextField {...passwordFieldProps} />
+                    <FlatButton {...loginButtonProps} />
                 </form>
             );
         }
 
         return (
             <div>
-                <Avatar src={profile.image} style={{verticalAlign:'middle'}} /> {profile.name} {profile.surname} <FlatButton label="Logout" onClick={this.handleLogoutClick} />
+                <Avatar src={profile.image} style={{ verticalAlign: 'middle' }} />
+                {profile.name} {profile.surname}
+                <FlatButton label="Logout" onClick={this.handleLogoutClick} />
             </div>
         );
     }

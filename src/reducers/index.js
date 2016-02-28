@@ -1,7 +1,7 @@
 import { routerStateReducer as router } from 'redux-router';
 import { combineReducers } from 'redux';
 
-import { 
+import {
     TESTS_REQUEST,
     TESTS_SUCCESS,
     TESTS_FAILURE

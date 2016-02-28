@@ -1,7 +1,7 @@
 {
   "name": "redux-isomorphic-starter-kit",
   "description": "React Redux Isomorphic Starter Kit with integrated JSON Web Tokens",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Karol Tyka <karol@tykarol.com>",
   "repository": {
     "type": "git",
@@ -35,7 +35,9 @@
     "clean-webpack-plugin": "^0.1.8",
     "connect-history-api-fallback": "^1.1.0",
     "css-loader": "^0.23.1",
-    "eslint": "^1.10.3",
+    "eslint": "^2.2.0",
+    "eslint-config-airbnb": "^6.0.2",
+    "eslint-plugin-react": "^4.1.0",
     "exports-loader": "^0.6.2",
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^0.9.1",

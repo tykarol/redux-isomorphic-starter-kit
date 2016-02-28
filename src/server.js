@@ -1,4 +1,4 @@
-import express from 'express';
+import Express from 'express';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import { match } from 'react-router';
@@ -10,28 +10,27 @@ import configureStore from 'stores/configureStore';
 import routes from 'routes';
 import { loggedUserTokenSave } from 'actions';
 import { Html } from 'helpers';
-import config  from '../config';
+import config from '../config';
 
-let app  = new express();
+const app = new Express();
 const port = 8080;
 
 // This is only for mocked api, you can simple delete this
-app.all('/mock-api/*', function(req, res, next) {
+app.all('/mock-api/*', (req, res, next) => {
+    // eslint-disable-next-line no-param-reassign
     req.method = 'GET';
     next();
 });
 
-app.use(express.static(config.get('dir_dist')));
-
-app.use(handleRender);
+app.use(Express.static(config.get('dir_dist')));
 
 function handleRender(req, res) {
     // Send the rendered page back to the client
-    match({routes, location: req.url}, (error, redirectLocation, routerState) => {
+    match({ routes, location: req.url }, (error, redirectLocation, routerState) => {
         if (error) {
-            res.status(500).send(error.message)
+            res.status(500).send(error.message);
         } else if (redirectLocation) {
-            res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+            res.redirect(302, redirectLocation.pathname + redirectLocation.search);
         } else if (!routerState) {
             res.status(404).send('Not found');
         } else {
@@ -43,8 +42,14 @@ function handleRender(req, res) {
                 store.dispatch(loggedUserTokenSave(token));
             }
 
+            const htmlProps = {
+                store,
+                assets: webpackIsomorphicTools.assets(),
+                component: <Root store={store} />
+            };
+
             const html = ReactDOM.renderToString(
-                            <Html assets={webpackIsomorphicTools.assets()} store={store} component={<Root store={store} />} />
+                            <Html {...htmlProps} />
                         );
 
             res.send(`<!doctype html>${html}`);
@@ -52,10 +57,14 @@ function handleRender(req, res) {
     });
 }
 
-app.listen(port, function(error) {
+app.use(handleRender);
+
+app.listen(port, (error) => {
     if (error) {
+        // eslint-disable-next-line no-console
         console.error(error);
     } else {
-        console.info("==> Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port);
+        // eslint-disable-next-line no-console
+        console.info('==> Listening on port %s. Open up http://localhost:%s/ in your browser.', port, port);
     }
 });

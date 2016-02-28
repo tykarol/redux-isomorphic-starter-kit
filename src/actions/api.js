@@ -8,7 +8,7 @@ export const TEST_FAILURE = 'TEST_FAILURE';
 function fetchTest(testId) {
     return {
         [CALL_API]: {
-            types: [ TEST_REQUEST, TEST_SUCCESS, TEST_FAILURE ],
+            types: [TEST_REQUEST, TEST_SUCCESS, TEST_FAILURE],
             endpoint: `tests/${testId}`,
             schema: Schemas.TEST
         }
@@ -18,9 +18,9 @@ function fetchTest(testId) {
 export function loadTest(testId, requiredFields = []) {
     return (dispatch, getState) => {
         const test = getState().entities.tests[testId];
-        
+
         if (test && requiredFields.every(key => test.hasOwnProperty(key))) {
-          return null;
+            return null;
         }
 
         return dispatch(fetchTest(testId));
@@ -35,7 +35,7 @@ function fetchTests(tag, nextPageUrl) {
     return {
         tag,
         [CALL_API]: {
-            types: [ TESTS_REQUEST, TESTS_SUCCESS, TESTS_FAILURE ],
+            types: [TESTS_REQUEST, TESTS_SUCCESS, TESTS_FAILURE],
             endpoint: nextPageUrl,
             schema: Schemas.TEST_ARRAY
         }
@@ -45,10 +45,10 @@ function fetchTests(tag, nextPageUrl) {
 export function loadTests(tag, nextPage) {
     return (dispatch, getState) => {
         const {
-            nextPageUrl = `tests`,
+            nextPageUrl = 'tests',
             pageCount = 0
         } = getState().pagination.testsByTag[tag] || {};
-        
+
         if (pageCount > 0 && !nextPage) {
             return null;
         }

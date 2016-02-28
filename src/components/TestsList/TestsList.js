@@ -23,7 +23,7 @@ export default class TestsList extends Component {
         const isEmpty = items.length === 0;
 
         if (isEmpty && isFetching) {
-            return <div><i>Loading...</i></div>
+            return <div><i>Loading...</i></div>;
         }
 
         if (isEmpty && !isFetching) {
@@ -34,9 +34,9 @@ export default class TestsList extends Component {
 
         return (
             <ul>
-                {this.props.items.map(function(item) {
-                    return <TestsListItem key={item.id} item={item} />;
-                })}
+                {this.props.items.map((item) =>
+                    <TestsListItem key={item.id} item={item} />
+                )}
             </ul>
         );
     }

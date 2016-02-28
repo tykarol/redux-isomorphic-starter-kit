@@ -50,54 +50,50 @@ export class App extends Component {
             <p style={{ backgroundColor: '#e99', padding: 10 }}>
                 <b>{message}</b>
                 {' '}
-                (<a href="#"
-                    onClick={this.handleDismissClick}>
+                (<a href="#" onClick={this.handleDismissClick}>
                     Dismiss
                 </a>)
             </p>
         );
     }
 
-    render () {
-        const {
-            user,
-            loginUser,
-            logoutUser,
-            loadLoggedUser,
-            // React Router
-            children
-        } = this.props;
+    render() {
+        const props = this.props;
         const logoImage = require('./logo.png');
+
+        const userBoxProps = {
+            user: props.user,
+            onLogin: props.loginUser,
+            onLogout: props.logoutUser,
+            onLoad: props.loadLoggedUser
+        };
 
         return (
             <div>
-                <Helmet 
-                    title="App"
-                    titleTemplate="%s - Demo"
-                    />
-                <div className={classNames(grid['row'])}>
+                <Helmet title="App" titleTemplate="%s - Demo" />
+                <div className={classNames(grid.row)}>
                     <div className={classNames(grid['col-xs-12'], grid['col-md-2'])}>
-                        <img src={logoImage} style={{maxWidth: '100%'}} />
+                        <img src={logoImage} style={{ maxWidth: '100%' }} />
                     </div>
                     <div className={classNames(grid['col-xs-12'], grid['col-md-10'])}>
-                        <UserBox user={user} onLogin={loginUser} onLogout={logoutUser} onLoad={loadLoggedUser} />
+                        <UserBox {...userBoxProps} />
                     </div>
                 </div>
                 <div>
                     <p>Menu: <Link to="/">Index</Link> | <Link to="/tests">Tests</Link></p>
                 </div>
                 {this.renderFlashMessage()}
-                {children}
+                {props.children}
             </div>
         );
     }
-};
+}
 
 function mapStateToProps(state) {
     return {
         flashMessage: state.flashMessage,
         user: state.user
-    }
+    };
 }
 
 export default connect(
@@ -108,4 +104,4 @@ export default connect(
         logoutUser,
         loadLoggedUser
     }
-)(App)
+)(App);

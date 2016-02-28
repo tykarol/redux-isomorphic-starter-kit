@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
 export default class NotFoundPage extends Component {
@@ -10,4 +10,4 @@ export default class NotFoundPage extends Component {
             </div>
         );
     }
-};
+}

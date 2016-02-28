@@ -3,14 +3,14 @@ import { isClient } from 'helpers';
 
 export default {
     get(name) {
-        if(isClient()) {
+        if (isClient()) {
             return cookie.parse(document.cookie)[name];
         }
 
         return null;
     },
     set(name, value, options) {
-        if(isClient()) {
+        if (isClient()) {
             document.cookie = cookie.serialize(name, value, options);
         }
     },

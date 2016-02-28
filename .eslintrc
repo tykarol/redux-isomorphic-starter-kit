@@ -1,3 +1,22 @@
 {
-    "parser": "babel-eslint"
+    "env": {
+        "browser": true,
+        "node": true,
+        "mocha": true
+    },
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "indent": [2, 4, {"SwitchCase": 1}],
+        "comma-dangle": 0
+    },
+    "globals": {
+        "__DEV__": true,
+        "__PROD__": true,
+        "__API_URI__": true,
+        "webpackIsomorphicTools": true
+    }
 }

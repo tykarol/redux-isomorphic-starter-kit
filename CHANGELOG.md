@@ -1,8 +1,10 @@
 # Chanelog
 
-## HEAD
+## v0.1.1
+> 28.02.2016
 
 * Update README
+* Change eslint config and fix linter errors
 
 ## v0.1.0
 > 08.02.2016

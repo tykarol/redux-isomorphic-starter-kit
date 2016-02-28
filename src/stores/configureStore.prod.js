@@ -9,4 +9,4 @@ export default function configureStore(history, initialState) {
         applyMiddleware(thunk, api),
         history
     )(createStore)(rootReducer, initialState);
-};
+}

@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom/server';
 import Helmet from 'react-helmet';
 
@@ -25,10 +25,12 @@ export default class Html extends Component {
         const head = Helmet.rewind();
 
         // Remove token from store
-        if(initialState.user && initialState.user.token) {
+        if (initialState.user && initialState.user.token) {
             initialState.user.token = null;
         }
-        
+
+        const initialStateHtml = `window.__INITIAL_STATE__=${JSON.stringify(initialState)};`;
+
         return (
             <html lang="pl">
                 <head>
@@ -38,16 +40,17 @@ export default class Html extends Component {
                     {head.link.toComponent()}
                     {head.script.toComponent()}
 
-                    {/*<link rel="shortcut icon" href="/favicon.ico" />*/}
+                    {/* <link rel="shortcut icon" href="/favicon.ico" /> */}
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
-                    {/* styles (will be present only in production with webpack extract text plugin) */}
+                    {/* styles */}
+                    {/* (will be present only in production with webpack extract text plugin) */}
                     {Object.keys(assets.styles).map((style, key) =>
                         <link href={assets.styles[style]} key={key} rel="stylesheet" />
                     )}
                 </head>
                 <body>
-                    <div id="root" dangerouslySetInnerHTML={{__html: content}}/>
-                    <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify(initialState)};`}} />
+                    <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
+                    <script dangerouslySetInnerHTML={{ __html: initialStateHtml }} />
                     {Object.keys(assets.javascript).map((script, key) =>
                         <script src={assets.javascript[script]} key={key} />
                     )}
