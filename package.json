@@ -1,7 +1,7 @@
 {
   "name": "redux-isomorphic-starter-kit",
   "description": "React Redux Isomorphic Starter Kit with integrated JSON Web Tokens",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "author": "Karol Tyka <karol@tykarol.com>",
   "repository": {
     "type": "git",
