@@ -1,5 +1,9 @@
 # Chanelog
 
+## HEAD
+
+* Update dependencies
+
 ## v0.1.1
 > 28.02.2016
 
