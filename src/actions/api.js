@@ -20,7 +20,7 @@ export function loadTest(testId, requiredFields = []) {
         const test = getState().entities.tests[testId];
 
         if (test && requiredFields.every(key => test.hasOwnProperty(key))) {
-            return null;
+            return Promise.resolve();
         }
 
         return dispatch(fetchTest(testId));
@@ -50,7 +50,7 @@ export function loadTests(tag, nextPage) {
         } = getState().pagination.testsByTag[tag] || {};
 
         if (pageCount > 0 && !nextPage) {
-            return null;
+            return Promise.resolve();
         }
 
         return dispatch(fetchTests(tag, nextPageUrl));

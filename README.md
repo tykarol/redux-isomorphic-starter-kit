@@ -16,7 +16,7 @@ After clone repository you need to run:
 ### Available commands
 
 * `npm run dist [-- --api_uri]` - compiling files (files version for production `NODE_ENV=production`) - you can use `api_uri` parameter to change `api_uri` config value
-* `npm run server` - running simple node server - without compile so you need run `dist` method first
+* `npm run server [-- --api_uri]` - running simple node server - without compile so you need run `dist` method first - you can use `api_uri` parameter to change `api_uri` config value
 * `npm run serve [-- --api_uri]` - running hot dev server (default on `http://localhost:3000`) - you can use `api_uri` parameter to change `api_uri` config value (example: `npm run serve -- --api_uri=http:\/\/localhost:8080\/api\/v1\/`)
 * `npm run test` - running mocha tests
 * `npm run test-watch` - running mocha tests in watch mode
@@ -28,7 +28,8 @@ Check `package.json` for aliases.
 
 ### Todo
 
-* [ ] Add isomorphic pre-fetching data (using decorators)
+* [x] Add isomorphic pre-fetching data
+    * [ ] Change pre-fetching data to use decorators
 * [ ] Internationalization
 * [ ] Authorization (for pages/components)
 * [ ] Write tests
@@ -40,7 +41,7 @@ Check `package.json` for aliases.
 .
 ├── bin                        # Scripts for npm run
 ├── public                     # All built files (At this address should indicate the URL)
-│   └── mock-api               # Mocked API files (only for example) - You can delete then
+│   └── mock-api               # Mocked API files (only for example) - You can delete them
 ├── src                        # Application source code
 │   ├── actions                # Redux actions
 │   ├── components             # React Components

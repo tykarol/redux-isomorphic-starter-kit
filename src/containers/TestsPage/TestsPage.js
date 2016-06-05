@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 
 import { loadTests } from 'actions';
@@ -13,6 +14,13 @@ export class TestsPage extends Component {
         testsPagination: PropTypes.object,
         tests: PropTypes.array.isRequired,
         loadTests: PropTypes.func.isRequired
+    };
+
+    static fetchData({store}) {
+        let props = mapStateToProps(store.getState())
+        const { tag } = props;
+
+        return bindActionCreators(loadTests, store.dispatch)(tag);
     };
 
     componentWillMount() {

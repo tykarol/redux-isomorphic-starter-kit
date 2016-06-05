@@ -1,3 +1,4 @@
+import mapValues from 'lodash/mapValues';
 import path from 'path';
 import webpack from 'webpack';
 import postcssImport from 'postcss-import';
@@ -7,7 +8,11 @@ import CleanPlugin from 'clean-webpack-plugin';
 import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin';
 
 import config from './config';
-import configIsomorphicTools from './isomorphic-tools.config'
+import configIsomorphicTools from './isomorphic-tools.config';
+
+let globals = mapValues(config.get('globals'), function(varible) {
+    return JSON.stringify(varible);
+});
 
 let webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(configIsomorphicTools)
     .development(config.get('env') !== 'production');
@@ -87,7 +92,7 @@ let webpackConfig = {
         extensions: ['', '.js']
     },
     plugins: [
-        new webpack.DefinePlugin(config.get('globals')),
+        new webpack.DefinePlugin(globals),
         new CleanPlugin([
             paths.dist('fonts'),
             paths.dist('images'),

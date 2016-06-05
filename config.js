@@ -18,7 +18,7 @@ config.set('dir_dist', 'public');
 config.set('webpack_host', 'localhost');
 config.set('webpack_port', 3000);
 
-config.set('api_uri', '/mock-api/'); // Simple change address to your full api url
+config.set('api_uri', 'http://localhost:8080/mock-api/'); // Simple change address to your full api url
 
 /**************************************
 
@@ -33,12 +33,12 @@ Edit at Your Own Risk
 config.set('env', process.env.NODE_ENV);
 config.set('globals', {
     'process.env'  : {
-        'NODE_ENV' : JSON.stringify(config.get('env'))
+        'NODE_ENV' : config.get('env')
     },
     'NODE_ENV'     : config.get('env'),
     '__DEV__'      : config.get('env') === 'development',
     '__PROD__'     : config.get('env') === 'production',
-    '__API_URI__'  : JSON.stringify(argv.api_uri || config.get('api_uri'))
+    '__API_URI__'  : argv.api_uri || config.get('api_uri')
 });
 
 // ----------------------

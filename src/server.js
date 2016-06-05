@@ -34,25 +34,37 @@ function handleRender(req, res) {
         } else if (!routerState) {
             res.status(404).send('Not found');
         } else {
-            const history = reduxReactRouter({ routes, createHistory });
-            const store = configureStore(history, { router: routerState });
+            let history = reduxReactRouter({ routes, createHistory });
+            let store = configureStore(history, { router: routerState });
 
-            const token = cookie.parse(req.headers.cookie || '').token;
+            let token = cookie.parse(req.headers.cookie || '').token;
             if (token !== null) {
                 store.dispatch(loggedUserTokenSave(token));
             }
 
-            const htmlProps = {
-                store,
-                assets: webpackIsomorphicTools.assets(),
-                component: <Root store={store} />
-            };
+            getReduxPromise().then(() => {
+                let htmlProps = {
+                    store,
+                    assets: webpackIsomorphicTools.assets(),
+                    component: <Root store={store} />
+                };
 
-            const html = ReactDOM.renderToString(
-                            <Html {...htmlProps} />
-                        );
+                let html = ReactDOM.renderToString(
+                    <Html {...htmlProps} />
+                );
 
-            res.send(`<!doctype html>${html}`);
+                res.send(`<!doctype html>${html}`);
+            });
+
+            function getReduxPromise () {
+                let { query, params } = routerState;
+                let component = routerState.components[routerState.components.length - 1].WrappedComponent;
+                let promise = (component && component.fetchData)
+                    ? component.fetchData({ query, params, history, store })
+                    : Promise.resolve();
+
+                return promise;
+            }
         }
     });
 }

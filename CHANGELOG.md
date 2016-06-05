@@ -1,5 +1,11 @@
 # Chanelog
 
+## v0.3.0
+> 05.06.2016
+
+* Support Server Side Rendering pre-fetching data
+* Bug fixes
+
 ## v0.2.0
 > 18.04.2016
 

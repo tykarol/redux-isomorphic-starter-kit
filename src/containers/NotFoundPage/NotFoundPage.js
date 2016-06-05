@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
-export default class NotFoundPage extends Component {
+export class NotFoundPage extends Component {
     render() {
         return (
             <div>
@@ -11,3 +12,10 @@ export default class NotFoundPage extends Component {
         );
     }
 }
+
+const mapStateToProps = () => ({});
+
+export default connect(
+    mapStateToProps,
+    { }
+)(NotFoundPage);
